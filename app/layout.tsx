@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Fredoka, Dongle, Teko, Schoolbell } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
@@ -203,6 +204,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <Script
+          src="https://datafa.st/js/script.js"
+          data-website-id="dfid_5g2lwnSbJrd4B1gI67PaG"
+          data-domain="hookara.com"
+          strategy="afterInteractive"
+        />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
