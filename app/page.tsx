@@ -2,23 +2,17 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import {
-  CircleCheck,
-  Copy,
   FileText,
   Image as ImageIcon,
   Play,
   Settings as SettingsIcon,
   Maximize2,
-  Download,
-  Loader2,
   Clock,
   Pause,
-
   ArrowRight,
   Menu,
   X,
 } from "lucide-react";
-import { jsPDF } from "jspdf";
 import {
   FeaturesSection,
   WhySection,
@@ -133,8 +127,6 @@ export default function Index() {
     steps: { label: string; timestamp: number; uncertain: boolean; rounds: { number: number; instruction: string; stitches: number; timestamp: number }[] }[]
   } | null>(null)
 
-  const [copied, setCopied] = useState(false)
-  const [pdfLoading, setPdfLoading] = useState(false)
   const [progress, setProgress] = useState(0)
   const [playerReady, setPlayerReady] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -239,84 +231,6 @@ export default function Index() {
       container.requestFullscreen()
     }
   }, [])
-
-  const copyPattern = useCallback(() => {
-    if (!pattern) return
-    const text = [
-      `${t('pattern.materials')}: ${pattern.materials}`,
-      "",
-      `${t('pattern.abbreviations')}:`,
-      pattern.abbreviations,
-      "",
-      ...pattern.steps.map((s) => {
-        const ts = s.timestamp > 0 ? `[${formatTime(s.timestamp)}] ` : ""
-        const roundsText = s.rounds.map((r) => {
-          const rts = r.timestamp > 0 ? `[${formatTime(r.timestamp)}] ` : ""
-          if (r.number === 0) return `  ${rts}${r.instruction}`
-          return `  ${rts}${t('pattern.round')} ${r.number}: ${r.instruction}${r.stitches > 0 ? ` (${r.stitches} ${t('pattern.stitches')})` : ""}`
-        }).join("\n")
-        return `${ts}${s.label}\n${roundsText}${s.uncertain ? `\n${t('pattern.uncertain')}` : ""}`
-      }),
-    ].join("\n\n")
-    navigator.clipboard.writeText(text)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }, [pattern, t])
-
-  const downloadPDF = useCallback(() => {
-    if (!pattern) return
-    setPdfLoading(true)
-    try {
-      const doc = new jsPDF({ unit: "mm", format: "a4" })
-      const pageWidth = doc.internal.pageSize.getWidth()
-      const margin = 20
-      const maxWidth = pageWidth - margin * 2
-      let y = margin
-
-      const addText = (text: string, fontSize: number, isBold: boolean) => {
-        doc.setFontSize(fontSize)
-        doc.setFont("helvetica", isBold ? "bold" : "normal")
-        const lines = doc.splitTextToSize(text, maxWidth)
-        for (const line of lines) {
-          if (y > 270) {
-            doc.addPage()
-            y = margin
-          }
-          doc.text(line, margin, y)
-          y += fontSize * 0.5
-        }
-        y += 2
-      }
-
-      addText(videoInfo?.title ?? "Pattern Crochet", 18, true)
-      y += 4
-
-      addText(`Matériel: ${pattern.materials}`, 11, false)
-      y += 2
-      addText(`${t('pattern.abbreviations')}:`, 11, true)
-      addText(pattern.abbreviations, 10, false)
-      y += 4
-
-      for (const step of pattern.steps) {
-        addText(step.label, 12, true)
-        for (const round of step.rounds) {
-          const stitchInfo = round.stitches > 0 ? ` (${round.stitches} ${t('pattern.stitches')})` : ""
-          const line = round.number === 0
-            ? `  ${round.instruction}${stitchInfo}`
-            : `  ${t('pattern.round')} ${round.number}: ${round.instruction}${stitchInfo}`
-          addText(line, 10, false)
-        }
-        if (step.uncertain) {
-          addText(t('pattern.uncertain'), 9, false)
-        }
-        y += 2
-      }
-
-      doc.save("pattern-crochet.pdf")
-    } finally {
-      setPdfLoading(false)
-    }
-  }, [pattern, t, videoInfo?.title])
 
   const parsePattern = (raw: string) => {
     let cleaned = raw.trim()
@@ -571,36 +485,6 @@ export default function Index() {
                 <div className="flex items-center gap-2">
                   <FileText className="h-4 w-4 text-foreground/60" />
                   <span className="text-sm font-semibold">{t('pattern.title')}</span>
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <button
-                    onClick={copyPattern}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 text-xs text-foreground/70 hover:bg-secondary"
-                  >
-                    {copied ? (
-                      <>
-                        <CircleCheck className="h-3.5 w-3.5 text-green-600" />
-                        {t('pattern.copied')}
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="h-3.5 w-3.5" />
-                        {t('pattern.copy')}
-                      </>
-                    )}
-                  </button>
-                  <button
-                    onClick={downloadPDF}
-                    disabled={pdfLoading}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1.5 text-xs text-foreground/70 hover:bg-secondary disabled:opacity-50"
-                  >
-                    {pdfLoading ? (
-                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                      <Download className="h-3.5 w-3.5" />
-                    )}
-                    {t('pattern.downloadPdf')}
-                  </button>
                 </div>
               </div>
 
