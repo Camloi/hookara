@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "features": "Fonctionnalités",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Transformez un tuto crochet YouTube en",
+    "titleHighlight": "pattern écrit",
+    "description": "Collez le lien Youtube d'un tutoriel de crochet et obtenez instantanément les instructions écrites."
+  },
+  "input": {
+    "placeholder": "https://www.youtube.com/watch?v=...",
+    "loading": "Chargement...",
+    "generate": "Générer"
+  },
+  "pattern": {
+    "title": "Votre pattern généré",
+    "copy": "Copier les instructions",
+    "copied": "Copié !",
+    "downloadPdf": "Télécharger en PDF",
+    "waiting": "En attente de la génération...",
+    "generating": "Génération du pattern en cours...",
+    "materials": "Matériel",
+    "abbreviations": "Abréviations",
+    "round": "Rang",
+    "stitches": "ms",
+    "uncertain": "⚠ Certains détails sont incertains",
+    "placeholder": "Le pattern apparaîtra ici une fois généré.",
+    "noSteps": "Aucune instruction n'a pu être récupérée pour cette vidéo. Essayez avec une autre vidéo qui contient des sous-titres."
+  },
+  "progress": {
+    "analyzing": "Analyse de la transcription et génération du pattern...",
+    "almostDone": "Presque terminé, merci de votre patience !"
+  },
+  "features": {
+    "title": "Comment ça marche ?",
+    "subtitle": "Trois étapes simples pour passer du tuto vidéo au pattern écrit.",
+    "step1Title": "Collez le lien",
+    "step1Desc": "Copiez l'URL d'un tutoriel YouTube et collez-le dans l'outil.",
+    "step2Title": "Génération IA",
+    "step2Desc": "Notre IA analyse la transcription et génère un pattern structuré.",
+    "step3Title": "Pattern prêt",
+    "step3Desc": "Copiez-le, téléchargez-le en PDF ou suivez-le directement en ligne."
+  },
+  "why": {
+    "title": "Pourquoi Hookara ?",
+    "timeTitle": "Gain de temps",
+    "timeDesc": "Plus besoin de noter manuellement chaque étape en regardant la vidéo.",
+    "terminologyTitle": "Terminologie FR / US",
+    "terminologyDesc": "Choisissez entre la terminologie française ou américaine.",
+    "timestampsTitle": "Timestamps",
+    "timestampsDesc": "Chaque étape est liée au moment précis de la vidéo.",
+    "pdfTitle": "PDF & copie",
+    "pdfDesc": "Exportez votre pattern en PDF ou copiez-le en un clic."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": "Est-ce que toutes les vidéos fonctionnent ?",
+    "a1": "Seules les vidéos disposant de sous-titres peuvent fournir des instructions.",
+    "q2": "Quelle est la différence entre terminologie FR et US ?",
+    "a2": "Les points de crochet ne portent pas les mêmes noms selon les pays (par exemple, une \"single crochet\" en US correspond à une \"maille serrée\" en FR). Vous choisissez la terminologie qui vous convient, et le pattern s'adapte automatiquement.",
+    "q3": "Comment fonctionnent les timestamps ?",
+    "a3": "Chaque étape du pattern est reliée au moment exact de la vidéo où elle est expliquée. Un clic vous amène directement au bon passage si vous avez besoin de revoir un geste.",
+    "q4": "Combien de temps prend la génération d'un pattern ?",
+    "a4": "Généralement moins d'une minute, selon la longueur de la vidéo.",
+    "q5": "Mes données / la vidéo que je soumets sont-elles stockées ?",
+    "a5": "Non, nous ne stockons aucune donnée."
+  },
+  "footer": {
+    "madeWith": "Fait avec ❤️ par"
+  },
+  "contact": {
+    "title": "Tu aimes ce site ?",
+    "subtitle": "Fais-le moi savoir !",
+    "likeCount": "{count} personne{plural} ont aimé ce site",
+    "beFirst": "Sois le premier à aimer !"
+  },
+  "errors": {
+    "fetchError": "Erreur lors de la récupération",
+    "transcriptError": "Erreur lors de la récupération du transcript",
+    "invalidPattern": "Une erreur est survenue lors de la génération du pattern. Réessayez.",
+    "unexpectedError": "Une erreur est survenue"
+  },
+  "lang": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

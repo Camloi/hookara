@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "features": "Features",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Turn a YouTube crochet tutorial into a",
+    "titleHighlight": "written pattern",
+    "description": "Paste a YouTube crochet tutorial link and instantly get the written instructions."
+  },
+  "input": {
+    "placeholder": "https://www.youtube.com/watch?v=...",
+    "loading": "Loading...",
+    "generate": "Generate"
+  },
+  "pattern": {
+    "title": "Your generated pattern",
+    "copy": "Copy instructions",
+    "copied": "Copied!",
+    "downloadPdf": "Download as PDF",
+    "waiting": "Waiting for generation...",
+    "generating": "Generating pattern...",
+    "materials": "Materials",
+    "abbreviations": "Abbreviations",
+    "round": "Rnd",
+    "stitches": "sts",
+    "uncertain": "⚠ Some details are uncertain",
+    "placeholder": "The pattern will appear here once generated.",
+    "noSteps": "No instructions could be retrieved for this video. Try another video with subtitles."
+  },
+  "progress": {
+    "analyzing": "Analyzing transcript and generating pattern...",
+    "almostDone": "Almost done, thanks for your patience!"
+  },
+  "features": {
+    "title": "How does it work?",
+    "subtitle": "Three simple steps to go from video tutorial to written pattern.",
+    "step1Title": "Paste the link",
+    "step1Desc": "Copy a YouTube tutorial URL and paste it into the tool.",
+    "step2Title": "AI Generation",
+    "step2Desc": "Our AI analyzes the transcript and generates a structured pattern.",
+    "step3Title": "Pattern ready",
+    "step3Desc": "Copy it, download it as PDF, or follow it directly online."
+  },
+  "why": {
+    "title": "Why Hookara?",
+    "timeTitle": "Time saver",
+    "timeDesc": "No more manually noting each step while watching the video.",
+    "terminologyTitle": "FR / US Terminology",
+    "terminologyDesc": "Choose between French or American terminology.",
+    "timestampsTitle": "Timestamps",
+    "timestampsDesc": "Each step is linked to the exact moment in the video.",
+    "pdfTitle": "PDF & copy",
+    "pdfDesc": "Export your pattern as PDF or copy it with one click."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "What's the difference between FR and US terminology?",
+    "a1": "Crochet stitches have different names depending on the country (for example, a US \"single crochet\" is a French \"maille serrée\"). You choose the terminology that suits you, and the pattern adapts automatically.",
+    "q2": "How do timestamps work?",
+    "a2": "Each step in the pattern is linked to the exact moment in the video where it's explained. A click takes you directly to the right section if you need to review a technique.",
+    "q3": "How long does pattern generation take?",
+    "a3": "Generally less than a minute, depending on the video length.",
+    "q4": "Are my data / the video I submit stored?",
+    "a4": "No, we don't store any data.",
+    "q5": "Do all videos work?",
+    "a5": "No, only videos with subtitles can provide instructions."
+  },
+  "footer": {
+    "madeWith": "Made with ❤️ by"
+  },
+  "contact": {
+    "title": "Like this site?",
+    "subtitle": "Let me know!",
+    "likeCount": "{count} {plural} liked this site",
+    "beFirst": "Be the first to like!"
+  },
+  "errors": {
+    "fetchError": "Error fetching video info",
+    "transcriptError": "Error fetching transcript",
+    "invalidPattern": "An error occurred while generating the pattern. Please try again.",
+    "unexpectedError": "An error occurred"
+  },
+  "lang": {
+    "fr": "Français",
+    "en": "English"
+  }
+}
