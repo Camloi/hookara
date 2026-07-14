@@ -74,7 +74,7 @@ export const metadata: Metadata = {
       "Transform any YouTube crochet tutorial into a structured written pattern with AI. Paste a video link, get your pattern instantly.",
     images: [
       {
-        url: "/og.png",
+        url: "/ogen.png",
         width: 1200,
         height: 630,
         alt: "Hookara — AI-powered crochet pattern generator",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     title: "Hookara — YouTube Crochet Tutorial → Written Pattern",
     description:
       "Transform any YouTube crochet tutorial into a structured written pattern with AI.",
-    images: ["/og.png"],
+    images: ["/ogen.png"],
     creator: "@kamtahh",
   },
   alternates: {
