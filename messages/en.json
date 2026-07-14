@@ -79,7 +79,8 @@
     "fetchError": "Error fetching video info",
     "transcriptError": "Error fetching transcript",
     "invalidPattern": "An error occurred while generating the pattern. Please try again.",
-    "unexpectedError": "An error occurred"
+    "unexpectedError": "An error occurred",
+    "notTutorial": "Oops! This video doesn't seem to be a crochet tutorial."
   },
   "lang": {
     "fr": "Français",

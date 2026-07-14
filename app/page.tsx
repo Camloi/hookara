@@ -144,6 +144,7 @@ export default function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [hasLiked, setHasLiked] = useState(false)
+  const [notTutorial, setNotTutorial] = useState(false)
   const playerRef = useRef<YTPlayerRef>({ player: null, ready: false })
   const playerContainerRef = useRef<HTMLDivElement>(null)
   const iframeId = `yt-player-${videoInfo?.videoId ?? "none"}`
@@ -392,6 +393,7 @@ export default function Index() {
     setLoading(true)
     setLoadingPattern(false)
     setError("")
+    setNotTutorial(false)
     setVideoInfo(null)
     setPattern(null)
     setGenerated(true)
@@ -404,6 +406,14 @@ export default function Index() {
       console.log(data)
       console.log('=== END VIDEO INFO ===')
       setLoading(false)
+
+      const checkRes = await fetch(`/api/check-tutorial?title=${encodeURIComponent(data.title)}`)
+      const checkData = await checkRes.json()
+      if (!checkRes.ok) throw new Error(checkData.error || t('errors.unexpectedError'))
+      if (!checkData.isTutorial) {
+        setNotTutorial(true)
+        return
+      }
 
       setLoadingPattern(true)
       const langParam = terminology === "fr" ? "fr" : "en"
@@ -693,6 +703,12 @@ export default function Index() {
                 </div>
               )}
 
+              {notTutorial && (
+                <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-center text-sm text-amber-700 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-300">
+                  {t('errors.notTutorial')}
+                </div>
+              )}
+
               {/* Pattern section */}
               {loadingPattern ? (
                 <div className="mt-5 rounded-xl border border-border bg-background/60 p-4 sm:p-6">
@@ -771,7 +787,7 @@ export default function Index() {
                   </div>
                 </div>
                 )
-              ) : (
+              ) : notTutorial ? null : (
                 <div className="mt-5 rounded-xl border border-border bg-background/60 p-4 text-center text-sm text-muted-foreground">
                   {t('pattern.placeholder')}
                 </div>
@@ -790,18 +806,18 @@ export default function Index() {
       <FooterSection />
 
       {/* CONTACT BUTTON */}
-      <aside className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6" aria-label="Contact and feedback">
+      <aside className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center sm:bottom-6 sm:right-6 sm:h-14 sm:w-14" aria-label="Contact and feedback">
         <div
-          className="overflow-hidden rounded-2xl bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="h-12 w-12 overflow-hidden rounded-2xl bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-14 sm:w-14"
           style={{
-            width: contactOpen ? "min(300px, calc(100vw - 2rem))" : "48px",
-            height: contactOpen ? "auto" : "48px",
+            width: contactOpen ? "min(300px, calc(100vw - 2rem))" : undefined,
+            height: contactOpen ? "auto" : undefined,
           }}
         >
           {!contactOpen ? (
             <button
               onClick={() => setContactOpen(true)}
-              className="flex h-12 w-12 items-center justify-center text-xl transition hover:scale-110 cursor-pointer sm:h-14 sm:w-14 sm:text-2xl"
+              className="flex h-full w-full items-center justify-center text-xl transition hover:scale-110 cursor-pointer sm:text-2xl"
             >
               👀
             </button>
