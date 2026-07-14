@@ -2,7 +2,6 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import {
-  Sparkles,
   CircleCheck,
   Copy,
   FileText,
@@ -15,8 +14,6 @@ import {
   Clock,
   Pause,
   Heart,
-  MoveRight,
-  ArrowRightCircle,
   ArrowRight,
   Menu,
   X,
@@ -441,13 +438,13 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground antialiased overflow-hidden">
       {/* NAV */}
-      <header className="relative mx-auto max-w-[1400px] px-4 py-4 md:px-8 md:py-6">
+      <header className="relative mx-auto max-w-[1400px] px-4 py-4 md:px-8 md:py-6" role="banner">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-tight">Hookara</span>
           </div>
           <div className="flex items-center gap-4 md:gap-6">
-            <nav className="hidden items-center gap-10 text-sm text-foreground/80 md:flex">
+            <nav className="hidden items-center gap-10 text-sm text-foreground/80 md:flex" aria-label="Main navigation">
               <a href="#fonctionnalites" className="hover:text-foreground">{t('nav.features')}</a>
               <a href="#faq" className="hover:text-foreground">{t('nav.faq')}</a>
             </nav>
@@ -474,7 +471,7 @@ export default function Index() {
           </div>
         </div>
         {mobileMenuOpen && (
-          <nav className="mt-3 flex flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-lg md:hidden">
+          <nav className="mt-3 flex flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-lg md:hidden" aria-label="Mobile navigation">
             <a href="#fonctionnalites" onClick={() => setMobileMenuOpen(false)} className="text-sm text-foreground/80 hover:text-foreground">{t('nav.features')}</a>
             <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="text-sm text-foreground/80 hover:text-foreground">{t('nav.faq')}</a>
           </nav>
@@ -482,6 +479,7 @@ export default function Index() {
       </header>
 
       {/* MAIN CONTENT */}
+      <main>
       <section className="relative bg-gradient-to-br from-background via-background to-primary/5">
         <div className="absolute inset-0 bg-background/70 md:bg-gradient-to-r md:from-background md:via-background/90 md:to-transparent" />
         <div className="relative mx-auto flex max-w-[1400px] flex-col gap-6 px-4 pb-6 pt-4 sm:gap-12 sm:px-8 sm:pb-20 sm:pt-8 lg:flex-row">
@@ -624,15 +622,17 @@ export default function Index() {
                       <div id={iframeId} className="absolute inset-0 h-full w-full" />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 flex items-center gap-1.5 bg-gradient-to-t from-black/80 to-transparent p-2">
-                      <button
-                        onClick={togglePlay}
-                        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/30 transition"
-                      >
+                        <button
+                          onClick={togglePlay}
+                          aria-label={isPlaying ? "Pause video" : "Play video"}
+                          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/30 transition"
+                        >
                         {isPlaying ? <Pause className="h-3 w-3" fill="white" /> : <Play className="h-3 w-3" fill="white" />}
                       </button>
                       <div className="relative">
                         <button
                           onClick={() => setShowSpeedMenu(!showSpeedMenu)}
+                          aria-label="Change playback speed"
                           className="flex items-center gap-0.5 rounded-md bg-white/20 px-1.5 py-0.5 text-[10px] text-white hover:bg-white/30 transition"
                         >
                           <SettingsIcon className="h-2.5 w-2.5" />
@@ -655,6 +655,7 @@ export default function Index() {
                       <div className="flex-1" />
                       <button
                         onClick={toggleFullscreen}
+                        aria-label="Toggle fullscreen"
                         className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/30 transition"
                       >
                         <Maximize2 className="h-3 w-3" />
@@ -665,7 +666,7 @@ export default function Index() {
                     <p className="text-sm font-semibold leading-snug text-left">{videoInfo.title}</p>
                     <div className="mt-4 flex items-center gap-2">
                       {videoInfo.channelAvatar ? (
-                        <img src={videoInfo.channelAvatar} alt={videoInfo.channelName} referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" />
+                        <img src={videoInfo.channelAvatar} alt={`${videoInfo.channelName} channel avatar`} referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" loading="lazy" />
                       ) : (
                         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold">
                           {videoInfo.channelName?.[0] ?? ""}
@@ -785,10 +786,11 @@ export default function Index() {
       <FeaturesSection />
       <WhySection />
       <FaqSection />
+      </main>
       <FooterSection />
 
       {/* CONTACT BUTTON */}
-      <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
+      <aside className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6" aria-label="Contact and feedback">
         <div
           className="overflow-hidden rounded-2xl bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{
@@ -838,7 +840,7 @@ export default function Index() {
             </div>
           )}
         </div>
-      </div>
+      </aside>
     </div>
   );
 }

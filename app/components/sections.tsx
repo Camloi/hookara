@@ -12,9 +12,9 @@ import { useTranslation } from "@/lib/i18n";
 export function FeaturesSection() {
   const { t } = useTranslation()
   return (
-    <section id="fonctionnalites" className="bg-background py-8 md:py-24">
+    <section id="fonctionnalites" className="bg-background py-8 md:py-24" aria-labelledby="features-heading">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight">{t('features.title')}</h2>
+        <h2 id="features-heading" className="text-center text-3xl font-bold tracking-tight">{t('features.title')}</h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-muted-foreground">
           {t('features.subtitle')}
         </p>
@@ -53,9 +53,9 @@ export function FeaturesSection() {
 export function WhySection() {
   const { t } = useTranslation()
   return (
-    <section className="bg-secondary/40 py-12 md:py-24">
+    <section className="bg-secondary/40 py-12 md:py-24" aria-labelledby="why-heading">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight">{t('why.title')}</h2>
+        <h2 id="why-heading" className="text-center text-3xl font-bold tracking-tight">{t('why.title')}</h2>
         <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -98,9 +98,9 @@ export function WhySection() {
 export function FaqSection() {
   const { t } = useTranslation()
   return (
-    <section id="faq" className="bg-background py-12 md:py-24">
+    <section id="faq" className="bg-background py-12 md:py-24" aria-labelledby="faq-heading">
       <div className="mx-auto max-w-3xl px-4 md:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight">{t('faq.title')}</h2>
+        <h2 id="faq-heading" className="text-center text-3xl font-bold tracking-tight">{t('faq.title')}</h2>
         <div className="mt-12 space-y-4">
           {[
             { q: t('faq.q1'), a: t('faq.a1') },

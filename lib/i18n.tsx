@@ -57,6 +57,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const setLocale = useCallback((newLocale: Locale) => {
     localStorage.setItem('hookara-lang', newLocale)
     document.documentElement.lang = newLocale
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', newLocale === 'fr' ? 'fr_FR' : 'en_US')
     window.dispatchEvent(new StorageEvent('storage', { key: 'hookara-lang' }))
   }, [])
 
