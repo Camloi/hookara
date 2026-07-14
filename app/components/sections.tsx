@@ -134,7 +134,7 @@ export function FooterSection() {
     <footer className="border-t border-border bg-background py-8 md:py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 text-xs text-muted-foreground sm:flex-row sm:justify-between md:px-8">
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-foreground">Hookara</span>
+          <img src="/logo.svg" alt="Hookara" className="h-6 w-auto" />
         </div>
         <p>{t('footer.madeWith')} <a href="https://x.com/kamtahh" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition">Kamtah <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></p>
       </div>

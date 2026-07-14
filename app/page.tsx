@@ -13,7 +13,7 @@ import {
   Loader2,
   Clock,
   Pause,
-  Heart,
+
   ArrowRight,
   Menu,
   X,
@@ -140,10 +140,9 @@ export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [playbackRate, setPlaybackRate] = useState(1)
   const [showSpeedMenu, setShowSpeedMenu] = useState(false)
-  const [contactOpen, setContactOpen] = useState(false)
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [likeCount, setLikeCount] = useState(0)
-  const [hasLiked, setHasLiked] = useState(false)
+
   const [notTutorial, setNotTutorial] = useState(false)
   const playerRef = useRef<YTPlayerRef>({ player: null, ready: false })
   const playerContainerRef = useRef<HTMLDivElement>(null)
@@ -206,23 +205,6 @@ export default function Index() {
     return () => clearInterval(timer)
   }, [loadingPattern])
 
-  useEffect(() => {
-    const stored = localStorage.getItem("hookara-likes")
-    if (stored) setLikeCount(parseInt(stored, 10))
-    const liked = localStorage.getItem("hookara-liked")
-    if (liked === "true") setHasLiked(true)
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem("hookara-likes", likeCount.toString())
-  }, [likeCount])
-
-  const handleLike = () => {
-    if (hasLiked) return
-    setHasLiked(true)
-    setLikeCount((c) => c + 1)
-    localStorage.setItem("hookara-liked", "true")
-  }
 
   const seekTo = useCallback((seconds: number) => {
     const p = playerRef.current.player
@@ -451,7 +433,7 @@ export default function Index() {
       <header className="relative mx-auto max-w-[1400px] px-4 py-4 md:px-8 md:py-6" role="banner">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight">Hookara</span>
+            <img src="/logo.svg" alt="Hookara" className="h-6 w-auto" />
           </div>
           <div className="flex items-center gap-4 md:gap-6">
             <nav className="hidden items-center gap-10 text-sm text-foreground/80 md:flex" aria-label="Main navigation">
@@ -805,58 +787,7 @@ export default function Index() {
       </main>
       <FooterSection />
 
-      {/* CONTACT BUTTON */}
-      <aside className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center sm:bottom-6 sm:right-6 sm:h-14 sm:w-14" aria-label="Contact and feedback">
-        <div
-          className="h-12 w-12 overflow-hidden rounded-2xl bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-14 sm:w-14"
-          style={{
-            width: contactOpen ? "min(300px, calc(100vw - 2rem))" : undefined,
-            height: contactOpen ? "auto" : undefined,
-          }}
-        >
-          {!contactOpen ? (
-            <button
-              onClick={() => setContactOpen(true)}
-              className="flex h-full w-full items-center justify-center text-xl transition hover:scale-110 cursor-pointer sm:text-2xl"
-            >
-              👀
-            </button>
-          ) : (
-            <div className="p-4 sm:p-5">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold">{t('contact.title')}</span>
-                <button
-                  onClick={() => setContactOpen(false)}
-                  className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-primary-foreground/20 transition text-lg leading-none"
-                >
-                  ×
-                </button>
-              </div>
-              <p className="mt-1 text-sm opacity-90">{t('contact.subtitle')}</p>
-              <div className="mt-4 flex items-center gap-3">
-                <button
-                  onClick={handleLike}
-                  className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition ${
-                    hasLiked
-                      ? "bg-primary-foreground/25 cursor-default"
-                      : "bg-primary-foreground/15 hover:bg-primary-foreground/25"
-                  }`}
-                >
-                  <Heart
-                    className={`h-4 w-4 transition ${hasLiked ? "fill-current" : ""}`}
-                  />
-                  {likeCount}
-                </button>
-                <span className="text-xs opacity-80">
-                  {likeCount > 0
-                    ? t('contact.likeCount', { count: likeCount, plural: likeCount > 1 ? 's' : '' })
-                    : t('contact.beFirst')}
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
-      </aside>
+
     </div>
   );
 }
