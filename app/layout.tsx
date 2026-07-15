@@ -179,6 +179,14 @@ const faqJsonLd = {
         text: "Non, nous ne stockons aucune donnée.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Est-ce que la vidéo originale perd des vues ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Non. La vidéo est lue via le lecteur YouTube officiel, donc les vues et le watch time sont bien comptabilisés pour le créateur. Hookara ne fait que mettre en forme les sous-titres publics pour vous faire gagner du temps.",
+      },
+    },
   ],
 };
 

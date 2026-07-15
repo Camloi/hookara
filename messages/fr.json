@@ -15,9 +15,6 @@
   },
   "pattern": {
     "title": "Votre pattern généré",
-    "copy": "Copier les instructions",
-    "copied": "Copié !",
-    "downloadPdf": "Télécharger en PDF",
     "waiting": "En attente de la génération...",
     "generating": "Génération du pattern en cours...",
     "materials": "Matériel",
@@ -40,7 +37,7 @@
     "step2Title": "Génération IA",
     "step2Desc": "Notre IA analyse la transcription et génère un pattern structuré.",
     "step3Title": "Pattern prêt",
-    "step3Desc": "Copiez-le, téléchargez-le en PDF ou suivez-le directement en ligne."
+    "step3Desc": "Le pattern s'affiche avec les timestamps, prêt à être suivi en regardant la vidéo."
   },
   "why": {
     "title": "Pourquoi Hookara ?",
@@ -50,8 +47,8 @@
     "terminologyDesc": "Choisissez entre la terminologie française ou américaine.",
     "timestampsTitle": "Timestamps",
     "timestampsDesc": "Chaque étape est liée au moment précis de la vidéo.",
-    "pdfTitle": "PDF & copie",
-    "pdfDesc": "Exportez votre pattern en PDF ou copiez-le en un clic."
+    "publicTitle": "Données publiques",
+    "publicDesc": "Les sous-titres sont publics, Hookara les met juste en forme pour vous faire gagner du temps."
   },
   "faq": {
     "title": "Questions fréquentes",
@@ -64,7 +61,9 @@
     "q4": "Combien de temps prend la génération d'un pattern ?",
     "a4": "Généralement moins d'une minute, selon la longueur de la vidéo.",
     "q5": "Mes données / la vidéo que je soumets sont-elles stockées ?",
-    "a5": "Non, nous ne stockons aucune donnée."
+    "a5": "Non, nous ne stockons aucune donnée.",
+    "q6": "Est-ce que la vidéo originale perd des vues ?",
+    "a6": "Non. La vidéo est lue via le lecteur YouTube officiel, donc les vues et le watch time sont bien comptabilisés pour le créateur. Hookara ne fait que mettre en forme les sous-titres publics pour vous faire gagner du temps."
   },
   "footer": {
     "madeWith": "Fait avec ❤️ par"

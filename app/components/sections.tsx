@@ -4,7 +4,7 @@ import {
   Globe,
   Clock,
   Timer,
-  Download,
+  BookOpen,
   ChevronDown,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n";
@@ -74,9 +74,9 @@ export function WhySection() {
               desc: t('why.timestampsDesc'),
             },
             {
-              icon: <Download className="h-5 w-5" />,
-              title: t('why.pdfTitle'),
-              desc: t('why.pdfDesc'),
+              icon: <BookOpen className="h-5 w-5" />,
+              title: t('why.publicTitle'),
+              desc: t('why.publicDesc'),
             },
           ].map((f, i) => (
             <div key={i} className="flex gap-4">
@@ -108,6 +108,7 @@ export function FaqSection() {
             { q: t('faq.q3'), a: t('faq.a3') },
             { q: t('faq.q4'), a: t('faq.a4') },
             { q: t('faq.q5'), a: t('faq.a5') },
+            { q: t('faq.q6'), a: t('faq.a6') },
           ].map((item, i) => (
             <details
               key={i}
