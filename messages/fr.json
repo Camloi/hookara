@@ -34,8 +34,8 @@
     "subtitle": "Trois étapes simples pour passer du tuto vidéo au pattern écrit.",
     "step1Title": "Collez le lien",
     "step1Desc": "Copiez l'URL d'un tutoriel YouTube et collez-le dans l'outil.",
-    "step2Title": "Génération IA",
-    "step2Desc": "Notre IA analyse la transcription et génère un pattern structuré.",
+    "step2Title": "Génération",
+    "step2Desc": "Une fois les sous titres récupérés, nous les utilisons pour vous proposer une liste d'instructions structurées.",
     "step3Title": "Pattern prêt",
     "step3Desc": "Le pattern s'affiche avec les timestamps, prêt à être suivi en regardant la vidéo."
   },

@@ -34,8 +34,8 @@
     "subtitle": "Three simple steps to go from video tutorial to written pattern.",
     "step1Title": "Paste the link",
     "step1Desc": "Copy a YouTube tutorial URL and paste it into the tool.",
-    "step2Title": "AI Generation",
-    "step2Desc": "Our AI analyzes the transcript and generates a structured pattern.",
+    "step2Title": "Generation",
+    "step2Desc": "Once the subtitles are retrieved, we use them to propose you a list of structured instructions.",
     "step3Title": "Pattern ready",
     "step3Desc": "The pattern appears with timestamps, ready to follow while watching the video."
   },
