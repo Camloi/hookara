@@ -65,9 +65,6 @@
     "q6": "Est-ce que la vidéo originale perd des vues ?",
     "a6": "Non. La vidéo est lue via le lecteur YouTube officiel, donc les vues et le watch time sont bien comptabilisés pour le créateur. Hookara ne fait que mettre en forme les sous-titres publics pour vous faire gagner du temps."
   },
-  "footer": {
-    "madeWith": "Fait avec ❤️ par"
-  },
   "contact": {
     "title": "Tu aimes ce site ?",
     "subtitle": "Fais-le moi savoir !",

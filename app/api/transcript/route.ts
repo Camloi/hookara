@@ -91,11 +91,6 @@ export async function GET(request: Request) {
     )
   }
 
-  console.log('=== EXTRACTED SEGMENTS ===')
-  console.log(`Count: ${segments.length}`)
-  console.log(segments.slice(0, 5))
-  console.log('=== END EXTRACTED SEGMENTS ===')
-
   const transcriptText = segments.map((s) => s.text).join(' ')
 
   const mistral = new Mistral({ apiKey: process.env.MISTRAL_API_KEY, timeoutMs: 120000 })
@@ -212,10 +207,6 @@ ${transcriptText}`
     return ''
   })()
 
-  console.log('=== RAW AI RESPONSE ===')
-  console.log(rawContent)
-  console.log('=== END RAW AI RESPONSE ===')
-
   let cleanedPattern = rawContent
   const jsonMatch = rawContent.match(/```(?:json)?\s*\n?([\s\S]*?)\n?\s*```/)
   if (jsonMatch) {
@@ -231,9 +222,6 @@ ${transcriptText}`
     const lastBrace = cleanedPattern.lastIndexOf('}')
     if (firstBrace !== -1 && lastBrace > firstBrace) {
       cleanedPattern = cleanedPattern.slice(firstBrace, lastBrace + 1)
-      console.log('=== EXTRACTED JSON (no code fences) ===')
-      console.log(cleanedPattern)
-      console.log('=== END EXTRACTED JSON ===')
     }
   }
 
